@@ -9,7 +9,7 @@ public class User {
     private boolean solana;
     private boolean ether;
     private boolean btc;
-    private boolean ua;
+    private boolean uah;
     private boolean cad;
     private boolean notification;
     private byte notificationTime;
@@ -44,12 +44,12 @@ public class User {
         this.cad = cad;
     }
 
-    public boolean isUa() {
-        return ua;
+    public boolean isUah() {
+        return uah;
     }
 
-    public void setUa(boolean ua) {
-        this.ua = ua;
+    public void setUah(boolean uah) {
+        this.uah = uah;
     }
 
     public boolean isBtc() {

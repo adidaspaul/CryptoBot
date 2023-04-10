@@ -18,7 +18,7 @@ public class Schedule {
 
         Calendar calendar = new GregorianCalendar();
 
-        for (User user : UserService.getService().getUserList()) {
+        for (User user : UserService.getUserService().getUserList()) {
             if (user.getNotificationTime() != 0) {
                 calendar.set(Calendar.HOUR_OF_DAY, user.getNotificationTime());
                 calendar.set(Calendar.MINUTE, 0);
@@ -28,15 +28,19 @@ public class Schedule {
                 if (delay < 0) {
                     delay = delay + 24 * 60 * 60 * 1000;
                 }
-            }
 
-            Runnable runnable = () -> {
-                try {
-                    Application.getBot().execute(SendMessage.builder()
-                            .text(UserService.getUserService().getInfo(message))
-                            .chatId(user.getChatId().toString())
-                            .build());
-                }
+
+                Runnable runnable = () -> {
+                    try {
+                        Application.getBot().execute(SendMessage.builder()
+                                .text(UserService.getUserService().getInfo(message))
+                                .chatId(user.getChatId().toString())
+                                .build());
+                    } catch (TelegramApiException e) {
+                        e.printStackTrace();
+                    }
+                };
+                poolExecutor.scheduleAtFixedRate(runnable, delay, 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);
             }
         }
     }
