@@ -24,7 +24,27 @@ public class CashService {
         monobankRateIsValid = false;
     }
 
-
+    public List<BankResponse> getCashMonoBankCurrency(){
+        MonobankApi monoApi = new MonobakApi();
+        if(monobankRateIsValid == false | monobankResponse.size() == 0);{
+            monobankRateIsValid = true;
+            try{
+                monobankResponse.addAll(monoApi.getActualCurrency());
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            Runnable monobankRateFlushRunnable = () -> monobankFlush();
+            if(poolExecutor.getActiveCount() !=0){
+                poolExecutor.shutdownNow();
+            }
+            poolExecutor.schedule(monobankFLush(),5,TimeUnit.MINUTES);
+        }
+        ArrayList<BankResponse> bankResponse = new ArrayList<>();
+        bankResponse.addAll(monobankResponse);
+        return bankResponse;
+    }
 
 
 }
