@@ -1,6 +1,13 @@
 package java.model;
 
+import java.model.User;
+import java.model.CashService;
+
 public class Facade {
 
-    CashService chashService = new CashService();
+    CashService cashService = new CashService();
+
+    public List <BankResponse> getResponseFromBank(User user){
+        return cashService.getCashMonoBankCurrency();
+    }
 }
