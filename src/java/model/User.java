@@ -1,4 +1,4 @@
-package java.model;
+package src.java.model;
 
 import java.util.Objects;
 
@@ -11,6 +11,7 @@ public class User {
     private boolean btc;
     private boolean uah;
     private boolean cad;
+    private String selectedBank;
     private boolean notification;
     private byte notificationTime;
 
@@ -18,6 +19,15 @@ public class User {
         this.chatId = chatId;
         this.decimalDigit = 2;
         this.btc = true;
+    }
+
+
+    public String getSelectedBank() {
+        return selectedBank;
+    }
+
+    public void setSelectedBank() {
+        this.selectedBank = selectedBank;
     }
 
     public Long getChatId() {
@@ -36,11 +46,11 @@ public class User {
         this.decimalDigit = decimalDigit;
     }
 
-    public boolean isCad(){
+    public boolean isCad() {
         return cad;
     }
 
-    public void setCad(boolean cad){
+    public void setCad(boolean cad) {
         this.cad = cad;
     }
 
@@ -97,12 +107,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return decimalDigit == user.decimalDigit && solana == user.solana && ether == user.ether && btc == user.btc && ua == user.ua && cad == user.cad && notification == user.notification && notificationTime == user.notificationTime;
+        return decimalDigit == user.decimalDigit && solana == user.solana && ether == user.ether && btc == user.btc && uah == user.uah && cad == user.cad && notification == user.notification && notificationTime == user.notificationTime;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatId, decimalDigit, solana, ether, btc, ua, cad, notification, notificationTime);
+        return Objects.hash(chatId, decimalDigit, solana, ether, btc, uah, cad, notification, notificationTime);
     }
 
     @Override
@@ -113,7 +123,7 @@ public class User {
                 ", solana=" + solana +
                 ", ether=" + ether +
                 ", btc=" + btc +
-                ", ua=" + ua +
+                ", ua=" + uah +
                 ", cad=" + cad +
                 ", notification=" + notification +
                 ", notificationTime=" + notificationTime +

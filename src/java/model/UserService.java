@@ -1,4 +1,7 @@
-package java.model;
+package src.java.model;
+
+import java.model.User;
+
 
 import org.telegram.telegrambots.meta.api.objects.Message;
 
@@ -12,6 +15,8 @@ public class UserService {
     private static UserService userService;
     private Facade facade = new Facade();
 
+    private List<User> userList;
+
     public static UserService getUserService() {
         return userService;
     }
@@ -20,7 +25,6 @@ public class UserService {
         return userList;
     }
 
-    private List<User> userList;
 
     private UserService() {
         this.userList = new ArrayList<>();
@@ -59,11 +63,11 @@ public class UserService {
         BigDecimal usdSell = new BigDecimal("0.0");
         User user = getUser(message);
         StringBuilder result = new StringBuilder();
-        List<BankResponse> bank = facade.getResponseFromBank(getUser(message));
+        List <BankResponse> bank = facade.getResponseFromBank(getUser(message));
         result.append("Rate is ").append(user.getSelectedBank());
         if (user.isCad()) {
             for (BankResponse bankResponse : bank) {
-                if (bankREsponse.getCurrency().equals(CurrencyEnum.CAD.getCodeString())) {
+                if (bankResponse.getCurrency().equals(CurrencyEnum.CAD.getLetterCode())) {
                     result.append("\nCAD/UAH").append("\nBUY: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()))
                             .append("\nSell: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()));
                 }

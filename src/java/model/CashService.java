@@ -1,31 +1,30 @@
-package java.model;
+package src.java.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class CashService {
     private CopyOnWriteArrayList<BankResponse> monobankResponse = new CopyOnWriteArrayList<>();
-    private CopyOnWriteArrayList<BankResponse> binanceResponse = new CopyOnWriteArraySet<>();
-    private CopyOnWriteArrayList<BankResponse> geckoResponse = new CopyOnWriteArraySet<>();
+    private CopyOnWriteArrayList<BankResponse> binanceResponse = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<BankResponse> geckoResponse = new CopyOnWriteArrayList<>();
     private ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(3);
 
-    private boolean monobankResponse = false;
-    private boolean binanceResponse = false;
-    private boolean gecjoResponse = false;
+    private boolean monobankRateIsValid = false;
+    private boolean binanceRateIsValid = false;
+    private boolean gecjoRareIsValid = false;
 
 
-    private void monobankFLush(){
+    private void monobankFlush(){
         monobankResponse.clear();
         monobankRateIsValid = false;
     }
 
     public List<BankResponse> getCashMonoBankCurrency(){
-        MonobankApi monoApi = new MonobakApi();
+        MonobankApi monoApi = new MonobankApi();
         if(monobankRateIsValid == false | monobankResponse.size() == 0);{
             monobankRateIsValid = true;
             try{
@@ -39,7 +38,7 @@ public class CashService {
             if(poolExecutor.getActiveCount() !=0){
                 poolExecutor.shutdownNow();
             }
-            poolExecutor.schedule(monobankFLush(),5,TimeUnit.MINUTES);
+            poolExecutor.schedule(monobankRateFlushRunnable,5,TimeUnit.MINUTES);
         }
         ArrayList<BankResponse> bankResponse = new ArrayList<>();
         bankResponse.addAll(monobankResponse);
