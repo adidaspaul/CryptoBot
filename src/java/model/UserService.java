@@ -1,7 +1,5 @@
 package src.java.model;
 
-import java.model.User;
-
 
 import org.telegram.telegrambots.meta.api.objects.Message;
 
@@ -68,40 +66,28 @@ public class UserService {
         if (user.isCad()) {
             for (BankResponse bankResponse : bank) {
                 if (bankResponse.getCurrency().equals(CurrencyEnum.CAD.getLetterCode())) {
-                    result.append("\nCAD/UAH").append("\nBUY: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()))
-                            .append("\nSell: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()));
+                    result.append("\nCAD/UAH").append("\nPrice: ").append(new BigDecimal(bankResponse.getRateCross().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()));
                 }
             }
         }
         if(user.isBtc()){
             for(BankResponse bankResponse : bank){
-                if(bankResponse.getCurrency().equals(CurrencyEnum.BTC.getCodeString())){
-                    result.append("\nBTC/CAD").append("\nBUY: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(),RoundingMode.DOWN).toString()))
-                            .append("\nSell: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDecimalDigit(),RoundingMode.DOWN).toString()));
+                if(bankResponse.getCurrency().equals(CryptoEnum.BTC.getName())){
+                    result.append("\nBTC/USD").append("\nPrice: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(),RoundingMode.DOWN).toString()));
                 }
             }
         }
         if(user.isEther()){
             for(BankResponse bankResponse : bank){
-                if(bankResponse.getCurrency().equals(CurrencyEnum.ETC.getCodeString())){
-                    result.append("\nETC/CAD").append("\nBuy").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()))
-                            .append("\nSell").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDecimalDigit(),RoundingMode.DOWN).toString()));
+                if(bankResponse.getCurrency().equals(CryptoEnum.ETC.getName())){
+                    result.append("\nETC/USD").append("\nPrice").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()));
                 }
             }
         }
         if(user.isSolana()){
             for(BankResponse bankResponse : bank){
-                if(bankResponse.getCurrency().equals(CurrencyEnum.SOL.getCodeString())){
-                    result.append("\nSOL/CAD").append("\nBuy: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()))
-                            .append("\nSell: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDecimalDigit(),RoundingMode.DOWN).toString()));
-                }
-            }
-        }
-        if(user.isUah()){
-            for(BankResponse bankResponse : bank){
-                if(bankResponse.getCurrency().equals(CurrencyEnum.UAH.getCodeString())){
-                    result.append("\nUAH/CAD").append("\nBuy: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()))
-                            .append("\nSell: ").append(new BigDecimal(bankResponse.getSellRate().setScale(user.getDecimalDigit(),RoundingMode.DOWN).toString()));
+                if(bankResponse.getCurrency().equals(CryptoEnum.SOL.getName())){
+                    result.append("\nSOL/CAD").append("\nBuy: ").append(new BigDecimal(bankResponse.getBuyRate().setScale(user.getDecimalDigit(), RoundingMode.DOWN).toString()));
                 }
             }
         }

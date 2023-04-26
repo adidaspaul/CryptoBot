@@ -40,6 +40,14 @@ private BigDecimal rateCross;
         return sellRate;
     }
 
+    public BigDecimal getRateCross() {
+        return rateCross;
+    }
+
+    public void setRateCross(BigDecimal rateCross) {
+        this.rateCross = rateCross;
+    }
+
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
