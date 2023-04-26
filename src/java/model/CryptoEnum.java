@@ -2,9 +2,9 @@ package src.java.model;
 
 public enum CryptoEnum {
 
-    BTC("BTCUSDT", "Bitcoin","bitcoin", "USD","BTC"),
-    ETC("ETCUSDT", "Ethereum","ethereum-classic", "USD", "ETC"),
-    SOL("SOLUSDT", "Solana","solana", "USD", "SOL");
+    BTC("Bitcoin","BTCUSDT", "bitcoin", "USD","BTC"),
+    ETC("Ethereum","ETCUSDT", "ethereum-classic", "USD", "ETC"),
+    SOL("Solana","SOLUSDT","solana", "USD", "SOL");
 
 
 
@@ -14,7 +14,7 @@ public enum CryptoEnum {
     private final String geckoCryptoSecondId;
 
     private final String cryptoCompareFirstId;
-    CryptoEnum(String binancePair, String name, String geckoFirstId, String geckoCryptoSecondId, String cryptoCompareFirstId){
+    CryptoEnum(String name,String binancePair, String geckoFirstId, String geckoCryptoSecondId, String cryptoCompareFirstId){
         this.binancePair = binancePair;
         this.name = name;
         this.geckoFirstId = geckoFirstId;
