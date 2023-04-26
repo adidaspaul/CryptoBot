@@ -16,9 +16,11 @@ public class MonobankApi {
 private final HttpClient CLIENT = HttpClient.newHttpClient();
 private final Gson JAYSON = new Gson();
 
+String url = "https://api.monobank.ua/bank/currency";
+
 public List<BankResponse> getActualCurrency() throws IOException, InterruptedException{
     HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("https://api.monobank.ua/bank/currency"))
+            .uri(URI.create(url))
             .GET()
             .build();
     HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
@@ -27,7 +29,7 @@ public List<BankResponse> getActualCurrency() throws IOException, InterruptedExc
     MonobankInfo usd = getUsdCurrencyFromList(mono);
     List<BankResponse> bankResponses = new ArrayList<>();
     bankResponses.add(new BankResponse("Monobank", CurrencyEnum.CAD.getLetterCode(),
-            new BigDecimal(String.valueOf(cad.getRateBuy())), new BigDecimal(String.valueOf(cad.getRateSell()))));
+            new BigDecimal(String.valueOf(cad.getRateCross()))));
     bankResponses.add(new BankResponse("Monobank", CurrencyEnum.USD.getLetterCode(),
             new BigDecimal(String.valueOf(usd.getRateBuy())), new BigDecimal(String.valueOf(usd.getRateSell()))));
     return bankResponses;
