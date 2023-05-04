@@ -9,7 +9,7 @@ public class User {
     private boolean solana;
     private boolean ether;
     private boolean btc;
-    private boolean uah;
+    private boolean usd;
     private boolean cad;
     private String selectedBank;
     private boolean notification;
@@ -54,12 +54,12 @@ public class User {
         this.cad = cad;
     }
 
-    public boolean isUah() {
-        return uah;
+    public boolean isUsd() {
+        return usd;
     }
 
-    public void setUah(boolean uah) {
-        this.uah = uah;
+    public void setUsd(boolean usd) {
+        this.usd = usd;
     }
 
     public boolean isBtc() {
@@ -107,12 +107,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return decimalDigit == user.decimalDigit && solana == user.solana && ether == user.ether && btc == user.btc && uah == user.uah && cad == user.cad && notification == user.notification && notificationTime == user.notificationTime;
+        return decimalDigit == user.decimalDigit && solana == user.solana && ether == user.ether && btc == user.btc && usd == user.usd && cad == user.cad && notification == user.notification && notificationTime == user.notificationTime;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatId, decimalDigit, solana, ether, btc, uah, cad, notification, notificationTime);
+        return Objects.hash(chatId, decimalDigit, solana, ether, btc, usd, cad, notification, notificationTime);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class User {
                 ", solana=" + solana +
                 ", ether=" + ether +
                 ", btc=" + btc +
-                ", ua=" + uah +
+                ", ua=" + usd +
                 ", cad=" + cad +
                 ", notification=" + notification +
                 ", notificationTime=" + notificationTime +
