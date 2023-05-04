@@ -30,7 +30,6 @@ public class Keyboard {
         return menu;
     }
 
-
     public List<List<InlineKeyboardButton>> getSettings() {
         List<List<InlineKeyboardButton>> settingsMenu = new ArrayList<>();
         settingsMenu.add(
@@ -126,6 +125,13 @@ public class Keyboard {
                         InlineKeyboardButton.builder()
                                 .text(userService.getUser(message).getSelectedBank().equalsIgnoreCase("CoinGecko") ? "✅Coingecko" : "Coingecko")
                                 .callbackData("Coingecko")
+                                .build()));
+
+        menu.add(
+                Arrays.asList(
+                        InlineKeyboardButton.builder()
+                                .text(userService.getUser(message).getSelectedBank().equalsIgnoreCase("Crypto Compare") ? "✅Crypto Compare" : "Crypto Compare")
+                                .callbackData("CryptoCompare")
                                 .build()));
 
         menu.add(
