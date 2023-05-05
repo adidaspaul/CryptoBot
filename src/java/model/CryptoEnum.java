@@ -3,7 +3,7 @@ package src.java.model;
 public enum CryptoEnum {
 
     BTC("Bitcoin","BTCUSDT", "bitcoin", "USD","BTC"),
-    ETC("Ethereum","ETCUSDT", "ethereum-classic", "USD", "ETC"),
+    ETC("Ethereum","ETHUSDT", "ethereum", "USD", "ETC"),
     SOL("Solana","SOLUSDT","solana", "USD", "SOL");
 
 

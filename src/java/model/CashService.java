@@ -11,11 +11,14 @@ public class CashService {
     private CopyOnWriteArrayList<BankResponse> monobankResponse = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<BankResponse> binanceResponse = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<BankResponse> geckoResponse = new CopyOnWriteArrayList<>();
+
+    private CopyOnWriteArrayList<BankResponse> cryptoCompareResponse = new CopyOnWriteArrayList<>();
     private ScheduledThreadPoolExecutor poolExecutor = new ScheduledThreadPoolExecutor(3);
 
     private boolean monobankRateIsValid = false;
     private boolean binanceRateIsValid = false;
-    private boolean gecjoRareIsValid = false;
+    private boolean geckoRareIsValid = false;
+    private boolean cryptoCompareIsValid = false;
 
 
     private void monobankFlush(){
