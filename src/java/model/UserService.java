@@ -108,12 +108,12 @@ public class UserService {
         }
     }
 
-    public void changeCurrencyUAH(Message message){
-        if(getUser(message).isUah()){
-            getUser(message).setUah(false);
+    public void changeCurrencyUSD(Message message){
+        if(getUser(message).isUsd()){
+            getUser(message).setUsd(false);
         }
-        else if(!getUser(message).isUah()){
-            getUser(message).setUah(true);
+        else if(!getUser(message).isUsd()){
+            getUser(message).setUsd(true);
         }
     }
 
