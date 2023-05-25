@@ -160,9 +160,9 @@ public class Controller extends TelegramLongPollingBot {
                 rounding.add("/2");
                 rounding.add("/3");
                 rounding.add("/4");
-                for (int i = 0; i < rounding.size(); i++){
-                    if (callbackQuery.getData().equals(rounding.get(i))){
-                        userService.changeDecimalDigit(message, Byte.parseByte(rounding.get(i).replaceAll("/", "")));
+                for (String s : rounding) {
+                    if (callbackQuery.getData().equals(s)) {
+                        userService.changeDecimalDigit(message, Byte.parseByte(s.replaceAll("/", "")));
                         execute(EditMessageReplyMarkup.builder()
                                 .chatId(message.getChatId().toString())
                                 .messageId(message.getMessageId())
@@ -190,9 +190,9 @@ public class Controller extends TelegramLongPollingBot {
                 times.add("21:00");
                 times.add("22:00");
                 times.add("23:00");
-                for (int i = 0; i < times.size(); i++){
-                    if (callbackQuery.getData().equals(times.get(i))){
-                        userService.changeSchedule(message, Byte.parseByte(times.get(i).substring(0,2)));
+                for (String time : times) {
+                    if (callbackQuery.getData().equals(time)) {
+                        userService.changeSchedule(message, Byte.parseByte(time.substring(0, 2)));
                         execute(EditMessageReplyMarkup.builder()
                                 .chatId(message.getChatId().toString())
                                 .messageId(message.getMessageId())
