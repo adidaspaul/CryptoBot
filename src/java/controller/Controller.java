@@ -229,4 +229,25 @@ public class Controller extends TelegramLongPollingBot {
                 tel.printStackTrace();
             }
         }
+
+        private void handleMessage(Message message) throws TelegramApiException{
+        if (message.hasText() && message.hasEntities()){
+            Optional<MessageEntity> commandEntity = message.getEntities().stream()
+                    .filter(e -> "bot_command".equals(e.getType()))
+                    .findFirst();
+            if (commandEntity.isPresent()){
+                String command = message.getText().substring(commandEntity.get().getOffset(), commandEntity.get().getLength());
+                if (command.equals("/start")){
+                    userService.addUser(message);
+                    execute(SendMessage.builder()
+                            .text("Keep track of the currencies")
+                            .chatId(message.getChatId().toString())
+                            .replyMarkup(InlineKeyboardMarkup.builder()
+                                    .keyboard(keyboard.getMainMenu())
+                                    .build())
+                            .build());
+                }
+            }
+        }
+        }
     }
