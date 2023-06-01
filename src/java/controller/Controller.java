@@ -189,7 +189,6 @@ public class Controller extends TelegramLongPollingBot {
                 times.add("20:00");
                 times.add("21:00");
                 times.add("22:00");
-                times.add("23:00");
                 for (String time : times) {
                     if (callbackQuery.getData().equals(time)) {
                         userService.changeSchedule(message, Byte.parseByte(time.substring(0, 2)));

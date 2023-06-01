@@ -23,9 +23,9 @@ public class CryptoCompareApi {
         this.client = new OkHttpClient();
     }
 
-    List<CryptoResponse> responses = new ArrayList<>();
+    List<BankResponse> responses = new ArrayList<>();
 
-    public List<CryptoResponse> getCryptoRate() {
+    public List<BankResponse> getCryptoRate() {
 
         String btcUrl = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD";
         Request btcRequest = new Request.Builder()
@@ -41,7 +41,7 @@ public class CryptoCompareApi {
                         .string();
                 JsonNode btcNode = mapper.readTree(btcJson);
                 BigDecimal btcPrice = btcNode.get("USD").decimalValue();
-                CryptoResponse btcObject = new CryptoResponse("CryptoCompare", BTC.getCryptoCompareFirstId(), btcPrice);
+            BankResponse btcObject = new BankResponse("CryptoCompare", BTC.getCryptoCompareFirstId(), btcPrice);
                 responses.add(btcObject);
             }
 
@@ -63,7 +63,7 @@ public class CryptoCompareApi {
                     .string();
             JsonNode etcNode = mapper.readTree(etcJson);
             BigDecimal etcPrice = etcNode.get("USD").decimalValue();
-            CryptoResponse etcObject = new CryptoResponse("CryptoCompare", ETC.getCryptoCompareFirstId(), etcPrice);
+            BankResponse etcObject = new BankResponse("CryptoCompare", ETC.getCryptoCompareFirstId(), etcPrice);
             responses.add(etcObject);
         }
 
@@ -86,7 +86,7 @@ public class CryptoCompareApi {
                     .string();
             JsonNode solNode = mapper.readTree(solJson);
             BigDecimal solPrice = solNode.get("USD").decimalValue();
-            CryptoResponse solObject = new CryptoResponse("CryptoCompare", SOL.getCryptoCompareFirstId(), solPrice);
+            BankResponse solObject = new BankResponse("CryptoCompare", SOL.getCryptoCompareFirstId(), solPrice);
             responses.add(solObject);
         }
 

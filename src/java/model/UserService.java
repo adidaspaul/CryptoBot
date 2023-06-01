@@ -94,11 +94,6 @@ public class UserService {
         return result.toString();
     }
 
-
-    public void changeSchedule(Message message, byte time){
-        getUser(message).setNotificationTime(time);
-    }
-
     public void changeCurrencyCAD(Message message){
         if(getUser(message).isCad()){
             getUser(message).setCad(false);
@@ -142,5 +137,13 @@ public class UserService {
         else if(!getUser(message).isSolana()){
             getUser(message).setSolana(true);
         }
+    }
+
+    public void changeSchedule(Message message,byte time){
+        getUser(message).setNotificationTime(time);
+    }
+
+    public void changeDecimalDigit(Message message,byte digit){
+        getUser(message).setDecimalDigit(digit);
     }
 }

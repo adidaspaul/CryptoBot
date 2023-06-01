@@ -1,6 +1,6 @@
-package java.view;
+package src.java.view;
 
-public class ConsoleView implements ConsoleViewImpl {
+public class ConsoleView implements java.view.ConsoleViewImpl {
 
     @Override
     public void write(String message){

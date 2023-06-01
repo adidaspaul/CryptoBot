@@ -29,8 +29,8 @@ public class BinanceApi {
     }
 
 
-    List<CryptoResponse> responses = new ArrayList<>();
-    public List<CryptoResponse> getCryptoRate()  {
+    List<BankResponse> responses = new ArrayList<>();
+    public List<BankResponse> getCryptoRate()  {
 
         String btcUrl = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
         Request btcRequest = new Request.Builder()
@@ -45,7 +45,7 @@ public class BinanceApi {
                     .string();
             JsonNode btcNode = mapper.readTree(btcJson);
             BigDecimal btcPrice = btcNode.get("usd").decimalValue();
-            CryptoResponse btcObject = new CryptoResponse("Binance",BTC.getBinancePair(),btcPrice);
+            BankResponse btcObject = new BankResponse("Binance",BTC.getBinancePair(),btcPrice);
             responses.add(btcObject);
         }
         catch (IOException e){
@@ -65,7 +65,7 @@ public class BinanceApi {
                     .string();
             JsonNode ethNode = mapper.readTree(ethJson);
             BigDecimal ethPrice = ethNode.get("usd").decimalValue();
-            CryptoResponse ethObject = new CryptoResponse("Binance",ETC.getBinancePair(),ethPrice);
+            BankResponse ethObject = new BankResponse("Binance",ETC.getBinancePair(),ethPrice);
             responses.add(ethObject);
         }
         catch (IOException e){
@@ -85,7 +85,7 @@ public class BinanceApi {
                     .string();
             JsonNode solNode = mapper.readTree(solJson);
             BigDecimal solPrice = solNode.get("usd").decimalValue();
-            CryptoResponse solObject = new CryptoResponse("Binance",SOL.getBinancePair(),solPrice);
+            BankResponse solObject = new BankResponse("Binance",SOL.getBinancePair(),solPrice);
             responses.add(solObject);
         }
         catch (IOException e){
@@ -97,20 +97,20 @@ public class BinanceApi {
     }
 
 
-    public CryptoResponse getBinanceBitcoin(){
-        return FindCryptoObject.findByProperty(responses,btc -> BTC.getBinancePair().equals(btc.getCrypto()));
+    public BankResponse getBinanceBitcoin(){
+        return FindCryptoObject.findByProperty(responses,btc -> BTC.getBinancePair().equals(btc.getCurrency()));
     }
 
-    public CryptoResponse getBinanceEthereum(){
-        return FindCryptoObject.findByProperty(responses,eth -> ETC.getBinancePair().equals(eth.getCrypto()));
+    public BankResponse getBinanceEthereum(){
+        return FindCryptoObject.findByProperty(responses,eth -> ETC.getBinancePair().equals(eth.getCurrency()));
     }
 
-    public CryptoResponse getBinanceSolana(){
-        return FindCryptoObject.findByProperty(responses,sol -> SOL.getBinancePair().equals(sol.getCrypto()));
+    public BankResponse getBinanceSolana(){
+        return FindCryptoObject.findByProperty(responses,sol -> SOL.getBinancePair().equals(sol.getCurrency()));
     }
 
     public static final class FindCryptoObject {
-        public static <CryptoReponse> CryptoResponse findByProperty(List<CryptoResponse> resp, Predicate<CryptoResponse> filter) {
+        public static <BankResponse> BankResponse findByProperty(List<BankResponse> resp, Predicate<BankResponse> filter) {
             return resp.stream().filter(filter).findFirst().orElse(null);
         }
     }
