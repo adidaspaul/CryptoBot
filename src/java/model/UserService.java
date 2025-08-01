@@ -1,6 +1,7 @@
 package src.java.model;
 
 
+import org.telegram.telegrambots.meta.api.objects.MaybeInaccessibleMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 import java.math.BigDecimal;
@@ -35,7 +36,7 @@ public class UserService {
         return userService;
     }
 
-    public User getUser(Message message) {
+    public User getUser(MaybeInaccessibleMessage message) {
         for (User user : userList) {
             if (user.getChatId().equals(message.getChatId())) {
                 return user;
@@ -56,7 +57,7 @@ public class UserService {
         }
     }
 
-    public String getInfo(Message message) {
+    public String getInfo(MaybeInaccessibleMessage message) {
         BigDecimal usdBuy = new BigDecimal("0.0");
         BigDecimal usdSell = new BigDecimal("0.0");
         User user = getUser(message);
@@ -94,7 +95,7 @@ public class UserService {
         return result.toString();
     }
 
-    public void changeCurrencyCAD(Message message){
+    public void changeCurrencyCAD(MaybeInaccessibleMessage message){
         if(getUser(message).isCad()){
             getUser(message).setCad(false);
         }

@@ -1,6 +1,7 @@
 package src.java.controller;
 
 
+import org.telegram.telegrambots.meta.api.objects.MaybeInaccessibleMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
@@ -69,7 +70,7 @@ public class Keyboard {
         return settingsMenu;
     }
 
-    public List<List<InlineKeyboardButton>> getDecimalPoint(Message message) {
+    public List<List<InlineKeyboardButton>> getDecimalPoint(MaybeInaccessibleMessage message) {
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
         menu.add(
                 Arrays.asList(
@@ -102,7 +103,7 @@ public class Keyboard {
         return menu;
     }
 
-    public List<List<InlineKeyboardButton>> getBankMenu(Message message) {
+    public List<List<InlineKeyboardButton>> getBankMenu(MaybeInaccessibleMessage message) {
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
         menu.add(
                 Arrays.asList(
@@ -145,7 +146,7 @@ public class Keyboard {
 
     }
 
-    public List<List<InlineKeyboardButton>> getCurrencyMenu(Message message) {
+    public List<List<InlineKeyboardButton>> getCurrencyMenu(MaybeInaccessibleMessage message) {
         List<List<InlineKeyboardButton>> menu = new ArrayList<>();
         menu.add(
                 Arrays.asList(
@@ -191,7 +192,7 @@ public class Keyboard {
         return menu;
     }
 
-    public List<List<InlineKeyboardButton>> getTimeAlert(Message message) {
+    public List<List<InlineKeyboardButton>> getTimeAlert(MaybeInaccessibleMessage message) {
 
         byte time = userService.getUser(message).getNotificationTime();
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();

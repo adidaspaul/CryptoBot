@@ -3,10 +3,7 @@ package src.java.controller;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
-import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.MessageEntity;
-import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.*;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import src.java.model.Schedule;
@@ -46,7 +43,7 @@ public class Controller extends TelegramLongPollingBot {
     }
 
         private void handleCallback (CallbackQuery callbackQuery){
-            Message message = (Message) callbackQuery.getMessage();
+            MaybeInaccessibleMessage message =  callbackQuery.getMessage();
             try {
                 if (callbackQuery.getData().equals("get_info")) {
                     execute(SendMessage.builder()
