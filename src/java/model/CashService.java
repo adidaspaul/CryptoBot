@@ -42,7 +42,8 @@ public class CashService {
 
     public List<BankResponse> getBinanceCrypto(){
         BinanceApi binanceApi = new BinanceApi();
-        if(!binanceRateIsValid | binanceResponse.size() == 0);{
+        if(!binanceRateIsValid || binanceResponse.size() == 0)
+        {
             binanceRateIsValid = true;
             try{
                 binanceResponse.addAll(binanceApi.getCryptoRate());
@@ -60,7 +61,7 @@ public class CashService {
 
     public List<BankResponse> getGeckoCrypto(){
         CoinGeckoApi geckoApi = new CoinGeckoApi();
-        if(!geckoRateIsValid | geckoResponse.size() == 0);{
+        if(!geckoRateIsValid || geckoResponse.size() == 0){
             geckoRateIsValid = true;
             try{
                 geckoResponse.addAll(geckoApi.getCryptoRate());
@@ -78,7 +79,7 @@ public class CashService {
 
     public List<BankResponse> getCompareCrypto(){
         CryptoCompareApi compareApi = new CryptoCompareApi();
-        if(!cryptoCompareIsValid | cryptoCompareResponse.size() == 0);{
+        if(!cryptoCompareIsValid || cryptoCompareResponse.size() == 0){
             cryptoCompareIsValid = true;
             try{
                 cryptoCompareResponse.addAll(compareApi.getCryptoRate());
@@ -97,7 +98,7 @@ public class CashService {
 
     public List<BankResponse> getCashMonoBankCurrency(){
         MonobankApi monoApi = new MonobankApi();
-        if(!monobankRateIsValid | monobankResponse.size() == 0);{
+        if(!monobankRateIsValid || monobankResponse.size() == 0){
             monobankRateIsValid = true;
             try{
                 monobankResponse.addAll(monoApi.getActualCurrency());

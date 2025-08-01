@@ -19,6 +19,7 @@ public class User {
         this.chatId = chatId;
         this.decimalDigit = 2;
         this.btc = true;
+        this.selectedBank = "Monobank";
     }
 
 

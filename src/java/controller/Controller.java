@@ -24,12 +24,12 @@ public class Controller extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "null";
+        return "CryptoAdik_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "null";
+        return "5895885305:AAFdtEgofx5H9NIKiWjeWABdeGCwbv6u4Y0";
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Controller extends TelegramLongPollingBot {
                                     .build())
                             .build());
                 }
-                if (callbackQuery.getData().equals("decimal digit")) {
+                if (callbackQuery.getData().equals("decimal_digit")) {
                     execute(SendMessage.builder()
                             .text("Enter decimal digit")
                             .chatId(message.getChatId().toString())

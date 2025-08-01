@@ -36,7 +36,7 @@ public class Keyboard {
                 Arrays.asList(
                         InlineKeyboardButton.builder()
                                 .text("Decimal Digits")
-                                .callbackData("decimalDigit")
+                                .callbackData("decimal_digit")
                                 .build()));
 
         settingsMenu.add(

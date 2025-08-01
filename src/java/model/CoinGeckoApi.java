@@ -80,7 +80,7 @@ public class CoinGeckoApi {
                     .body()
                     .string();
             JsonNode solNode = mapper.readTree(solJson);
-            BigDecimal solPrice = solNode.get("bitcoin").get("price").decimalValue();
+            BigDecimal solPrice = solNode.get("solana").get("price").decimalValue();
             BankResponse solObject = new BankResponse("CoinGecko",SOL.getGeckoFirstId(), solPrice);
             responses.add(solObject);
         }

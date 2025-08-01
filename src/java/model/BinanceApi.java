@@ -44,7 +44,7 @@ public class BinanceApi {
                     .body()
                     .string();
             JsonNode btcNode = mapper.readTree(btcJson);
-            BigDecimal btcPrice = btcNode.get("usd").decimalValue();
+            BigDecimal btcPrice = btcNode.get("price").decimalValue();
             BankResponse btcObject = new BankResponse("Binance",BTC.getBinancePair(),btcPrice);
             responses.add(btcObject);
         }
@@ -64,7 +64,7 @@ public class BinanceApi {
                     .body()
                     .string();
             JsonNode ethNode = mapper.readTree(ethJson);
-            BigDecimal ethPrice = ethNode.get("usd").decimalValue();
+            BigDecimal ethPrice = ethNode.get("price").decimalValue();
             BankResponse ethObject = new BankResponse("Binance",ETC.getBinancePair(),ethPrice);
             responses.add(ethObject);
         }
@@ -84,7 +84,7 @@ public class BinanceApi {
                     .body()
                     .string();
             JsonNode solNode = mapper.readTree(solJson);
-            BigDecimal solPrice = solNode.get("usd").decimalValue();
+            BigDecimal solPrice = solNode.get("price").decimalValue();
             BankResponse solObject = new BankResponse("Binance",SOL.getBinancePair(),solPrice);
             responses.add(solObject);
         }
