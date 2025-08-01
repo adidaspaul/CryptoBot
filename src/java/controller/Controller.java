@@ -46,7 +46,7 @@ public class Controller extends TelegramLongPollingBot {
     }
 
         private void handleCallback (CallbackQuery callbackQuery){
-            Message message = callbackQuery.getMessage();
+            Message message = (Message) callbackQuery.getMessage();
             try {
                 if (callbackQuery.getData().equals("get_info")) {
                     execute(SendMessage.builder()
